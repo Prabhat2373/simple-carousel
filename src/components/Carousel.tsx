@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Grid, Typography, IconButton, makeStyles } from '@material-ui/core';
+import { Grid, Typography, IconButton } from '@material-ui/core';
 import PauseIcon from '@material-ui/icons/Pause';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 

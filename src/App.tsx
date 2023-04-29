@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import img1 from './assets/1134807.jpg';
 import img2 from './assets/wp2608224-wallpaper-4k.jpg';
 import img3 from './assets/large-cliff-pfeiffer-beach-usa-during-sunset.jpg';
