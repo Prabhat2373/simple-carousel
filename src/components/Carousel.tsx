@@ -1,15 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import {
-  Grid,
-  Typography,
-  Button,
-  IconButton,
-  makeStyles,
-} from '@material-ui/core';
-import PlayArrowIcon from '@material-ui/icons/PlayArrow';
+import { Grid, Typography, IconButton, makeStyles } from '@material-ui/core';
 import PauseIcon from '@material-ui/icons/Pause';
-import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
-import NavigateNextIcon from '@material-ui/icons/NavigateNext';
+import PlayArrowIcon from '@material-ui/icons/PlayArrow';
+
 import { ArrowLeft, ArrowRight } from '@material-ui/icons';
 
 type CarouselProps = {
@@ -20,80 +13,6 @@ type CarouselProps = {
     description: string;
   }[];
 };
-
-const useStyles = makeStyles((theme) => ({
-  image: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    width: '100%',
-    height: '100%',
-    objectFit: 'cover',
-    transition: 'opacity 0.5s',
-  },
-  currentImage: {
-    opacity: 1,
-    width: '100%',
-    height: 'auto',
-    marginBottom: theme.spacing(2),
-  },
-  prevImage: {
-    opacity: 0,
-    width: '50%',
-    height: 'auto',
-    marginRight: theme.spacing(2),
-  },
-  nextImage: {
-    opacity: 0,
-    width: '50%',
-    height: 'auto',
-    marginLeft: theme.spacing(2),
-  },
-  controls: {
-    position: 'absolute',
-    top: '50%',
-    transform: 'translateY(-50%)',
-    zIndex: 1,
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    width: '100%',
-    padding: theme.spacing(0, 2),
-  },
-  button: {
-    backgroundColor: 'rgba(255, 255, 255, 0.7)',
-    '&:hover': {
-      backgroundColor: 'rgba(255, 255, 255, 0.9)',
-    },
-  },
-  playButton: {
-    position: 'absolute',
-    bottom: theme.spacing(2),
-    right: theme.spacing(2),
-    zIndex: 1,
-    backgroundColor: 'rgba(255, 255, 255, 0.7)',
-    '&:hover': {
-      backgroundColor: 'rgba(255, 255, 255, 0.9)',
-    },
-  },
-  thumbnailContainer: {
-    display: 'flex',
-    overflowX: 'auto',
-    margin: theme.spacing(2, 0),
-  },
-  thumbnail: {
-    flex: '0 0 auto',
-    margin: theme.spacing(0, 0.5),
-    cursor: 'pointer',
-    filter: 'grayscale(1)',
-    '&:hover': {
-      filter: 'grayscale(0)',
-    },
-  },
-  selectedThumbnail: {
-    filter: 'grayscale(0)',
-  },
-}));
 
 const Carousel: React.FC<CarouselProps> = ({ items }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -177,16 +96,35 @@ const Carousel: React.FC<CarouselProps> = ({ items }) => {
             </Grid>
           </div>
 
-          <Grid justifyContent="flex-start" style={{ gap: '10px' }}>
-            <Grid item>
-              <Typography variant="h3">{items[currentSlide].title}</Typography>
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'space-between',
+            }}
+          >
+            <Grid justifyContent="flex-start" style={{ gap: '10px' }}>
+              <Grid item>
+                <Typography variant="h3">
+                  {items[currentSlide].title}
+                </Typography>
+              </Grid>
+              <Grid item>
+                <Typography variant="h5">
+                  {items[currentSlide].description}
+                </Typography>
+              </Grid>
             </Grid>
-            <Grid item>
-              <Typography variant="h5">
-                {items[currentSlide].description}
-              </Typography>
-            </Grid>
-          </Grid>
+            <div style={{ justifyContent: 'end' }}>
+              <IconButton onClick={handlePlayPause}>
+                {isPlaying ? (
+                  <PauseIcon fontSize="large" />
+                ) : (
+                  <PlayArrowIcon fontSize="large" />
+                )}
+              </IconButton>
+            </div>
+          </div>
         </Grid>
       </Grid>
     </div>
