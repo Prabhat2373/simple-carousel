@@ -63,7 +63,7 @@ const Carousel: React.FC<CarouselProps> = ({ items }) => {
               alt={items[currentSlide].title}
               width={700}
               height={400}
-              style={{ borderRadius: '33px' }}
+              style={{ borderRadius: '23px' }}
             />
 
             <Grid
@@ -81,7 +81,7 @@ const Carousel: React.FC<CarouselProps> = ({ items }) => {
                     style={{
                       filter:
                         currentSlide === index ? 'none' : 'grayscale(100%)',
-                      borderRadius: '33px',
+                      borderRadius: '23px',
                     }}
                     width={150}
                     height={120}
