@@ -95,7 +95,7 @@ const Carousel: React.FC<CarouselProps> = ({ items }) => {
         </Grid>
       </Grid>
 
-      <Grid container sm={12} md={6} spacing={4} style={{ marginTop: '20px' }}>
+      <Grid container sm={12} md={6} spacing={4} style={{ margin: '20px' }}>
         <Grid item sm={10}>
           <Grid item xs={12}>
             <Typography variant="h3">{items[currentSlide].title}</Typography>
