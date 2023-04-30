@@ -47,87 +47,76 @@ const Carousel: React.FC<CarouselProps> = ({ items }) => {
   }, [isPlaying, items.length]);
 
   return (
-    <div>
-      <Grid>
-        <Grid style={{ display: 'flex', gap: '50px' }}>
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}
-          >
-            <img
-              src={items[currentSlide].image}
-              alt={items[currentSlide].title}
-              width={700}
-              height={400}
-              style={{ borderRadius: '23px' }}
-            />
+    <Grid container spacing={5}>
+      <Grid item xs={12} md={6} spacing={5} justifyContent="center">
+        <Grid justifyContent="center" xs={12} md={12}>
+          <img
+            src={items[currentSlide].image}
+            alt={items[currentSlide].title}
+            style={{ borderRadius: '23px', width: '100%', height: '50vh' }}
+          />
+        </Grid>
 
-            <Grid
-              className="flex"
-              style={{ display: 'flex', alignItems: 'center', gap: '30px' }}
-            >
-              <IconButton onClick={handlePrevSlide}>
-                <ArrowLeft fontSize="large" />
-              </IconButton>
-              {items.map((item, index) => (
-                <Grid key={item.id} style={{ marginTop: '30px' }}>
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    style={{
-                      filter:
-                        currentSlide === index ? 'none' : 'grayscale(100%)',
-                      borderRadius: '23px',
-                    }}
-                    width={150}
-                    height={120}
-                    onClick={() => handleThumbnailClick(index)}
-                  />
-                </Grid>
-              ))}
-
-              <IconButton onClick={handleNextSlide}>
-                <ArrowRight fontSize="large" />
-              </IconButton>
-            </Grid>
-          </div>
-
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'space-between',
-            }}
-          >
-            <Grid justifyContent="flex-start" style={{ gap: '10px' }}>
-              <Grid item>
-                <Typography variant="h3">
-                  {items[currentSlide].title}
-                </Typography>
+        <Grid
+          container
+          justifyContent="center"
+          alignItems="center"
+          alignContent="center"
+          style={{ marginTop: '5%' }}
+        >
+          <Grid item xs={2} alignItems="flex-end" style={{ flexBasis: 0 }}>
+            <IconButton onClick={handlePrevSlide}>
+              <ArrowLeft fontSize="large" />
+            </IconButton>
+          </Grid>
+          <Grid container spacing={2} xs={8}>
+            {items.map((item, index) => (
+              <Grid key={item.id} item xs={3}>
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  style={{
+                    filter: currentSlide === index ? 'none' : 'grayscale(100%)',
+                    borderRadius: '23px',
+                    width: '100%',
+                    height: '100%',
+                  }}
+                  onClick={() => handleThumbnailClick(index)}
+                />
               </Grid>
-              <Grid item>
-                <Typography variant="h5">
-                  {items[currentSlide].description}
-                </Typography>
-              </Grid>
-            </Grid>
-            <div style={{ justifyContent: 'end' }}>
-              <IconButton onClick={handlePlayPause}>
-                {isPlaying ? (
-                  <PauseIcon fontSize="large" />
-                ) : (
-                  <PlayArrowIcon fontSize="large" />
-                )}
-              </IconButton>
-            </div>
-          </div>
+            ))}
+          </Grid>
+
+          <Grid item xs={2} alignContent="center">
+            <IconButton onClick={handleNextSlide}>
+              <ArrowRight fontSize="large" />
+            </IconButton>
+          </Grid>
         </Grid>
       </Grid>
-    </div>
+
+      <Grid container sm={12} md={6} spacing={4} style={{ marginTop: '20px' }}>
+        <Grid item sm={10}>
+          <Grid item xs={12}>
+            <Typography variant="h3">{items[currentSlide].title}</Typography>
+          </Grid>
+          <Grid item xs={12}>
+            <Typography variant="h5">
+              {items[currentSlide].description}
+            </Typography>
+          </Grid>
+        </Grid>
+        <Grid item sm={3}>
+          <IconButton onClick={handlePlayPause}>
+            {isPlaying ? (
+              <PauseIcon fontSize="large" />
+            ) : (
+              <PlayArrowIcon fontSize="large" />
+            )}
+          </IconButton>
+        </Grid>
+      </Grid>
+    </Grid>
   );
 };
 
