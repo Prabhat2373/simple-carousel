@@ -47,29 +47,31 @@ const Carousel: React.FC<CarouselProps> = ({ items }) => {
   }, [isPlaying, items.length]);
 
   return (
-    <Grid container spacing={5} xs={12}>
+    <Grid container xs={12}>
       <Grid item xs={12} md={6} spacing={5} justifyContent="center">
-        <Grid justifyContent="center" xs={12} md={12}>
-          <img
-            src={items[currentSlide].image}
-            alt={items[currentSlide].title}
-            style={{ borderRadius: '23px', width: '100%', height: '50vh' }}
-          />
+        <Grid container xs={12} justifyContent="center">
+          <Grid justifyContent="center" xs={12} md={10}>
+            <img
+              src={items[currentSlide].image}
+              alt={items[currentSlide].title}
+              style={{ borderRadius: '23px', width: '100%', height: '40vh' }}
+            />
+          </Grid>
         </Grid>
 
         <Grid
           container
           justifyContent="center"
           alignItems="center"
-          alignContent="center"
           style={{ marginTop: '5%' }}
+          xs={12}
         >
           <Grid item xs={2} alignItems="flex-end" style={{ flexBasis: 0 }}>
             <IconButton onClick={handlePrevSlide}>
               <ArrowLeft fontSize="large" />
             </IconButton>
           </Grid>
-          <Grid container spacing={2} xs={8}>
+          <Grid container spacing={2} xs={9}>
             {items.map((item, index) => (
               <Grid key={item.id} item xs={3}>
                 <img
@@ -87,7 +89,7 @@ const Carousel: React.FC<CarouselProps> = ({ items }) => {
             ))}
           </Grid>
 
-          <Grid item xs={2} alignContent="center">
+          <Grid item xs={1} alignContent="center">
             <IconButton onClick={handleNextSlide}>
               <ArrowRight fontSize="large" />
             </IconButton>
