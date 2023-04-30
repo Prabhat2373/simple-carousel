@@ -1,4 +1,4 @@
-React Image Carousel
+# React Image Carousel
 This is a simple image carousel built using React and Material-UI.
 
 Installation
