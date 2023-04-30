@@ -1,7 +1,7 @@
 # React Image Carousel
 This is a simple image carousel built using React and Material-UI.
 
-Installation
+# Installation
 Clone the repository
 Install dependencies using npm install
 Start the development server using npm start
