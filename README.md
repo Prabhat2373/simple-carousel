@@ -6,7 +6,8 @@ Clone the repository
 Install dependencies using npm install
 Start the development server using npm start
 Open http://localhost:3000 in your browser
-Usage
+
+# Usage
 To use the carousel in your own React project:
 
 Copy the Carousel.tsx file into your project
