@@ -47,7 +47,7 @@ const Carousel: React.FC<CarouselProps> = ({ items }) => {
   }, [isPlaying, items.length]);
 
   return (
-    <Grid container spacing={5}>
+    <Grid container spacing={5} xs={12}>
       <Grid item xs={12} md={6} spacing={5} justifyContent="center">
         <Grid justifyContent="center" xs={12} md={12}>
           <img
@@ -95,7 +95,7 @@ const Carousel: React.FC<CarouselProps> = ({ items }) => {
         </Grid>
       </Grid>
 
-      <Grid container sm={12} md={6} spacing={4} style={{ margin: '20px' }}>
+      <Grid container sm={12} md={5} spacing={4} style={{ margin: '20px' }}>
         <Grid item sm={10}>
           <Grid item xs={12}>
             <Typography variant="h3">{items[currentSlide].title}</Typography>
